@@ -1,0 +1,14 @@
+# Template information section
+name: "ym-service"
+summary: "Swift YandexMoney service template."
+author: "zalutskii"
+version: "0.0.1"
+license: "MIT"
+
+# The declarations for code files
+code_files:
+ - {name: Service.swift, path: Code/service.swift.liquid}
+ - {name: ServiceImpl.swift, path: Code/service_impl.swift.liquid}
+ - {name: ServiceFactory.swift, path: Code/service_factory.swift.liquid}
+test_files:
+ - {name: ServiceImplTests.swift, path: Tests/service_impl_tests.swift.liquid}

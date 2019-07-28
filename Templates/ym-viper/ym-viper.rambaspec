@@ -1,0 +1,21 @@
+# Template information section
+name: "ym-viper"
+summary: "Swift YandexMoney VIPER module template."
+author: "anukhov"
+version: "0.0.1"
+license: "MIT"
+
+# The declarations for code files
+code_files:
+# IO protocols
+ - {name: InteractorIO.swift, path: Code/interactor_io.swift.liquid}
+ - {name: ViewIO.swift, path: Code/view_io.swift.liquid}
+ - {name: RouterIO.swift, path: Code/router_io.swift.liquid}
+ - {name: ModuleIO.swift, path: Code/module_io.swift.liquid}
+# Layers
+ - {name: View/ViewController.swift, path: Code/View/viewcontroller.swift.liquid}
+ - {name: Presenter/Presenter.swift, path: Code/Presenter/presenter.swift.liquid}
+ - {name: Interactor/Interactor.swift, path: Code/Interactor/interactor.swift.liquid}
+ - {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
+ - {name: Assembly/Assembly.swift, path: Code/Assembly/assembly.swift.liquid}
+

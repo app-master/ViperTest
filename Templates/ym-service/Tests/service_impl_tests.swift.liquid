@@ -1,0 +1,14 @@
+import XCTest
+
+/// 
+final class {{ module_info.name }}ServiceImplTests: XCTestCase {
+
+    private var service: {{ module_info.name }}ServiceImpl!
+
+    override func setUp() {
+        super.setUp()
+
+        service = {{ module_info.name }}ServiceImpl()
+    }
+
+}

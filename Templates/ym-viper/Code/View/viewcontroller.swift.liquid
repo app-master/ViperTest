@@ -1,0 +1,55 @@
+import UIKit
+import YandexMoneyUI
+
+final class {{ module_info.name }}ViewController: YMBaseViewController {
+
+    var output: {{ module_info.name }}ViewOutput!
+
+    // MARK: - UI properties
+
+    // MARK: - Analytics
+
+    override var screenName: String? {
+        return output.analyticsEventScreenName
+    }
+
+    override func analyticsScreenParameters() -> AnalyticsParameters? {
+        return output.analyticsScreenParameters
+    }
+
+    // MARK: - Managing the View
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        output.setupView()
+    }
+
+    override func loadView() {
+        view = UIView()
+        setupView()
+        setupConstraints()
+    }
+
+    private func setupView() { }
+
+    private func setupConstraints() { }
+}
+
+// MARK: - {{ module_info.name }}ViewInput
+
+extension {{ module_info.name }}ViewController: {{ module_info.name }}ViewInput { }
+
+// MARK: - Constants
+
+private extension {{ module_info.name }}ViewController {
+    enum Constants { }
+}
+
+// MARK: - Localization
+
+private extension {{ module_info.name }}ViewController {
+    enum Localized {
+        // swiftlint:disable line_length
+        // swiftlint:enable line_length
+    }
+}

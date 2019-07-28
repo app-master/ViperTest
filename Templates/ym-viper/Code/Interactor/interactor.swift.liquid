@@ -1,0 +1,27 @@
+final class {{ module_info.name }}Interactor {
+
+    weak var output: {{ module_info.name }}InteractorOutput?
+
+	fileprivate let eventTracker: Tracking
+
+	init(eventTracker: Tracking) {
+        self.eventTracker = eventTracker
+    }
+}
+
+// MARK: - {{ module_info.name }}InteractorInput
+
+extension {{ module_info.name }}Interactor: {{ module_info.name }}InteractorInput { }
+
+// MARK: - Tracking
+
+extension {{ module_info.name }}Interactor: Tracking {
+
+    func track(_ event: String) {
+        eventTracker.track(event)
+    }
+
+    func trackEvent(_ name: String, parameters: AnalyticsParameters?) {
+        eventTracker.trackEvent(name, parameters: parameters)
+    }
+}

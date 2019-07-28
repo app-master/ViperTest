@@ -1,0 +1,6 @@
+/// 
+enum {{ module_info.name }}ServiceFactory { 
+    static func makeService() -> {{ module_info.name }}Service {
+        return {{ module_info.name }}ServiceImpl()
+    }
+}

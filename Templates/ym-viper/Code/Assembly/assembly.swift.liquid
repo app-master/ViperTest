@@ -1,0 +1,28 @@
+import UIKit.UIViewController
+
+enum {{ module_info.name }}Assembly {
+
+    static func makeModule(inputData: {{ module_info.name }}ModuleInputData,
+                           moduleOutput: {{ module_info.name }}ModuleOutput? = nil) -> UIViewController {
+
+        let view = {{ module_info.name }}ViewController()
+
+        let router = {{ module_info.name }}Router()
+        router.transitionHandler = view
+
+        let presenter = {{ module_info.name }}Presenter()
+        presenter.view = view
+        presenter.router = router
+        presenter.moduleOutput = moduleOutput
+
+        let eventTracker = YMAnalytics()
+
+        let interactor = {{ module_info.name }}Interactor(eventTracker: eventTracker)
+        interactor.output = presenter
+
+        presenter.interactor = interactor
+        view.output = presenter
+
+        return view
+    }
+}

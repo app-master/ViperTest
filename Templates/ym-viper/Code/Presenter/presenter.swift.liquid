@@ -1,0 +1,40 @@
+final class {{ module_info.name }}Presenter {
+
+	weak var view: {{ module_info.name }}ViewInput?
+	weak var moduleOutput: {{ module_info.name }}ModuleOutput?
+    var interactor: {{ module_info.name }}InteractorInput!
+    var router: {{ module_info.name }}RouterInput!
+    weak var analyticsProvider: AnalyticsProvider?
+}
+
+// MARK: - {{ module_info.name }}ModuleInput
+
+extension {{ module_info.name }}Presenter: {{ module_info.name }}ModuleInput { }
+
+// MARK: - {{ module_info.name }}ViewOutput
+
+extension {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput {
+
+	 var analyticsEventScreenName: String? {
+        return nil
+    }
+
+    var analyticsScreenParameters: AnalyticsParameters? {
+        return nil
+    }
+
+	func setupView() { }
+}
+
+// MARK: - {{ module_info.name }}InteractorOutput
+
+extension {{ module_info.name }}Presenter: {{ module_info.name }}InteractorOutput { }
+
+// MARK: - Localized
+
+extension {{ module_info.name }}Presenter {
+    enum Localized {
+    // swiftlint:disable line_length
+    // swiftlint:enable line_length
+    }
+}
