@@ -7,3 +7,18 @@
 //
 
 import Foundation
+
+class PhotoSearchInteractor: PhotoSearchInteractorInput {
+    
+    var dataManager: PhotoSearchProtocol!
+    
+    func fetchPhotosWithSearchTag(_ searchTag: String, page: Int) {
+        
+        dataManager.fetchPhotosForSearchText(searchTag, page: page) { photos in
+            print(photos!)
+        }
+        
+    }
+    
+    
+}

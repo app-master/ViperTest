@@ -10,25 +10,25 @@ import UIKit
 
 class PhotoViewController: UIViewController {
 
-    private var photos = [Photo]()
+    var presenter: PhotoViewControllerOutput!
+    var currentPage = 1
+    var totalPages = 1
+    var photos = [Photo]()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        PhotoSearchAssembly.sharedInstance.configureModuleWithViewController(self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        ServerManager.manager.fetchPhotosForSearchText("Tropical", page: 1) { photos in
-
-            print()
-        }
         
-        let url = URL(string: "https://farm1.staticflickr.com/2/1418878_1e92283336_m.jpg")!
-        
-        ServerManager.manager.fetchImageFromURL(url) { image in
-            
-            print()
-            
-        }
-        
+        performWithSearchText(searchText)
     }
     
-
+    func performWithSearchText(_ text: String) {
+        presenter.getPhotosWithSearchTag(text, page: currentPage)
+    }
+    
 }

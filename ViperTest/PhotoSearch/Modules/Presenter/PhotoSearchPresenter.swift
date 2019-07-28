@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class PhotoSearchPresenter: PhotoSearchPresenterInput {
+    
+    var interactor: PhotoSearchInteractorInput!
+    
+    func getPhotosWithSearchTag(_ searchTag: String, page: Int) {
+       interactor.fetchPhotosWithSearchTag(searchTag, page: page)
+    }
+    
+}

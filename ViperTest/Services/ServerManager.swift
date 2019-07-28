@@ -8,14 +8,10 @@
 
 import UIKit
 
-class ServerManager {
-    
-    static let manager = ServerManager()
+class ServerManager: PhotoSearchProtocol {
     
     let apiKey = "4fb7690ff8bda132439e145d616a715d"
     let baseURL = URL(string: "https://www.flickr.com/services/rest/")!
-    
-    private init() {}
     
     // MARK: - Methods
     
@@ -63,7 +59,7 @@ class ServerManager {
         
     }
     
-    func fetchImageFromURL(_ url: URL, completion: @escaping (UIImage?) -> Void) {
+    func fetchImageByURL(_ url: URL, completion: @escaping (UIImage?) -> Void) {
         
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             
@@ -75,7 +71,6 @@ class ServerManager {
             let image = UIImage(data: data)
             
             completion(image)
-            
             
         }.resume()
         
