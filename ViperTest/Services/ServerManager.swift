@@ -10,12 +10,16 @@ import UIKit
 
 class ServerManager: PhotoSearchProtocol {
     
+    static let manager = ServerManager()
+    
+    private init() {}
+    
     let apiKey = "4fb7690ff8bda132439e145d616a715d"
     let baseURL = URL(string: "https://www.flickr.com/services/rest/")!
     
     // MARK: - Methods
     
-    func fetchPhotosForSearchText(_ text: String, page: Int, completion: @escaping ([Photo]?) -> Void) {
+    func fetchPhotosForSearchText(_ text: String, page: Int, completion: @escaping ([Photo]?, Int?, NSError?) -> Void) {
         
        var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
         
@@ -30,7 +34,7 @@ class ServerManager: PhotoSearchProtocol {
         components?.queryItems = [methodQueryItem] + params.map(){ URLQueryItem(name: $0, value: $1) }
         
         guard let finalURL = components?.url else {
-            completion(nil)
+            completion(nil, nil, NSError(domain: "Bad URL", code: 111, userInfo: nil))
             return
         }
         
@@ -39,19 +43,20 @@ class ServerManager: PhotoSearchProtocol {
         session.dataTask(with: finalURL) { (data, _, _) in
 
             guard let data = data else {
-                completion(nil)
+                completion(nil, nil, NSError(domain: "Bad Data", code: 112, userInfo: nil))
                 return
             }
 
             do {
                let photosResponse = try JSONDecoder().decode(PhotosResponse.self, from: data)
                let photosInfo = photosResponse.photos
+               let totalPages = photosInfo.total
                let photos = photosInfo.photo
-               completion(photos)
+               completion(photos, totalPages, nil)
                return
             } catch {
                 print(error.localizedDescription)
-                completion(nil)
+                completion(nil, nil, NSError(domain: "Bad Decode", code: 113, userInfo: nil))
                 return
             }
 

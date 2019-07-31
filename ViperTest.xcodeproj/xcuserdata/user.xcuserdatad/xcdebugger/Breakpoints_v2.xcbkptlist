@@ -13,5 +13,53 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViperTest/PhotoSearch/Modules/PhotoSearchInteractor.swift"
+            timestampString = "586290230.4028701"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "fetchPhotosWithSearchTag(_:page:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ViperTest.PhotoSearchInteractor.fetchPhotosWithSearchTag(_: Swift.String, page: Swift.Int) -&gt; ()"
+                  moduleName = "ViperTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/ViperTest/ViperTest/PhotoSearch/Modules/PhotoSearchInteractor.swift"
+                  timestampString = "586290230.578845"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "141">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;ViperTest.Photo&gt;&gt;, Swift.Optional&lt;Swift.Int&gt;, Swift.Optional&lt;__C.NSError&gt;) -&gt; () in ViperTest.PhotoSearchInteractor.fetchPhotosWithSearchTag(_: Swift.String, page: Swift.Int) -&gt; ()"
+                  moduleName = "ViperTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/ViperTest/ViperTest/PhotoSearch/Modules/PhotoSearchInteractor.swift"
+                  timestampString = "586290230.5835921"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "243">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

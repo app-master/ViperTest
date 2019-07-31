@@ -8,6 +8,11 @@
 
 import Foundation
 
-protocol PhotoViewControllerOutput {
+protocol PhotoViewControllerOutput: class {
     func getPhotosWithSearchTag(_ searchTag: String, page: Int)
+}
+
+protocol PhotoViewControllerInput: class {
+    func displayFetchedPhotos(_ photos: [Photo], totalPages: Int)
+    func displayErrorViewWithText(_ text: String)
 }

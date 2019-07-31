@@ -31,9 +31,40 @@ class PhotoViewController: UIViewController {
         performWithSearchText(searchText)
     }
     
+    // MARK: - Methods
+    
     func performWithSearchText(_ text: String) {
         presenter.getPhotosWithSearchTag(text, page: currentPage)
     }
+    
+    func configureCell(_ cell: PhotoItemCell, withModel model: Photo) {
+        
+        ServerManager.manager.fetchImageByURL(model.smallImageURL) { image in
+            guard let image = image else { return }
+            
+            DispatchQueue.main.async {
+                cell.photoImageView.image = image
+            }
+        }
+        
+    }
+    
+}
+
+extension PhotoViewController: PhotoViewControllerInput {
+    func displayFetchedPhotos(_ photos: [Photo], totalPages: Int) {
+        self.photos.append(contentsOf: photos)
+        self.totalPages = totalPages
+        
+        DispatchQueue.main.async {
+            self.photoCollectionView.reloadData()
+        }
+    }
+    
+    func displayErrorViewWithText(_ text: String) {
+        
+    }
+    
     
 }
 
@@ -51,24 +82,32 @@ extension PhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.row < photos.count {
-            return getPhotoItemCellForCollectionView(collectionView, cellForItemAt: indexPath)
+            return photoItemCellForCollectionView(collectionView, cellForItemAt: indexPath)
+        } else {
+            currentPage += 1
+            performWithSearchText(searchText)
+            
+            return photoLoadingCellForCollectionView(collectionView, cellForItemAt: indexPath)
         }
         
-        return getPhotoLoadingCellForCollectionView(collectionView, cellForItemAt: indexPath)
     }
     
-    private func getPhotoItemCellForCollectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> PhotoItemCell {
+    private func photoItemCellForCollectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> PhotoItemCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoItemCell.defaultReuseIdentifier, for: indexPath) as! PhotoItemCell
         
+        let photo = photos[indexPath.row]
+        
+        configureCell(cell, withModel: photo)
+        
         return cell
     }
     
-    private func getPhotoLoadingCellForCollectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> PhotoLoadingCell {
+    private func photoLoadingCellForCollectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> PhotoLoadingCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoLoadingCell.defaultReuseIdentifier, for: indexPath) as! PhotoLoadingCell
         
-        return cell
+         return cell
         
     }
     

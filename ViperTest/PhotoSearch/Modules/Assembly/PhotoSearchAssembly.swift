@@ -18,11 +18,13 @@ class PhotoSearchAssembly {
         
         let presenter = PhotoSearchPresenter()
         let interator = PhotoSearchInteractor()
-        let serverManager = ServerManager()
+        let serverManager = ServerManager.manager
         
         vc.presenter = presenter
+        presenter.view = vc
         presenter.interactor = interator
         interator.dataManager = serverManager
+        interator.presenter = presenter
         
     }
     

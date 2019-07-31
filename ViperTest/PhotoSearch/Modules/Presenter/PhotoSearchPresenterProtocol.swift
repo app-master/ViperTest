@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol PhotoSearchPresenterInput: PhotoViewControllerOutput {
+protocol PhotoSearchPresenterInput: PhotoViewControllerOutput, PhotoSearchInteractorOutput {
     
 }

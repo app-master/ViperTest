@@ -9,6 +9,6 @@
 import UIKit
 
 protocol PhotoSearchProtocol: class {
-    func fetchPhotosForSearchText(_ text: String, page: Int, completion: @escaping ([Photo]?) -> Void)
+    func fetchPhotosForSearchText(_ text: String, page: Int, completion: @escaping ([Photo]?, Int?, NSError?) -> Void)
     func fetchImageByURL(_ url: URL, completion: @escaping (UIImage?) -> Void)
 }
