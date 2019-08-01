@@ -50,6 +50,12 @@ class PhotoViewController: UIViewController {
         
     }
     
+    // MARK: - Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        presenter.passDataToNextSceneWithSegue(segue)
+    }
+    
 }
 
 extension PhotoViewController: PhotoViewControllerInput {

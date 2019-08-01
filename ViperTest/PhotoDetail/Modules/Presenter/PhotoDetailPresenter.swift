@@ -6,4 +6,36 @@
 //  Copyright © 2019 Sergey Koshlakov. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class PhotoDetailPresenter: PhotoDetailPresenterInput {
+    
+    unowned var view: PhotoDetailViewControllerInput!
+    var interactor: PhotoDetailInteractorInput!
+    
+    
+    func saveSelectedPhotoModel(_ photo: Photo) {
+        interactor.configurePhotoModel(photo)
+    }
+    
+    func loadPhotoImage() {
+        interactor.loadImageFromUrl()
+    }
+    
+    func loadPhotoImageTitle() {
+        interactor.getPhotoImageTitle()
+    }
+    
+    
+    func sendLoadedFhotoImage(_ image: UIImage) {
+        view.displayLoadedPhotoImage(image)
+    }
+    
+    func sendLoadedFhotoImageTitle(_ title: String) {
+        view.displayLoadedPhotoTitle(title)
+    }
+    
+    
+    
+    
+}

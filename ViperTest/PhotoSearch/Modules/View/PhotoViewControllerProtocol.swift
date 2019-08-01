@@ -6,11 +6,12 @@
 //  Copyright © 2019 Sergey Koshlakov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol PhotoViewControllerOutput: class {
     func getPhotosWithSearchTag(_ searchTag: String, page: Int)
     func goToPhotoDetailScreen()
+    func passDataToNextSceneWithSegue(_ segue: UIStoryboardSegue)
 }
 
 protocol PhotoViewControllerInput: class {

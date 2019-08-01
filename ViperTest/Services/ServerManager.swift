@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ServerManager: PhotoSearchProtocol {
+class ServerManager: PhotoSearchProtocol, loadImageProtocol {
     
     static let manager = ServerManager()
     

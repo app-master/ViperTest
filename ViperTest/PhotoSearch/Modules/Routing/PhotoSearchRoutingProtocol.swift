@@ -6,8 +6,13 @@
 //  Copyright © 2019 Sergey Koshlakov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-protocol PhotoSearchRoutingProtocolInput {
+protocol PhotoSearchRoutingProtocolInput: class {
     func navigateToPhotoDetail()
+    func passDataToNextSceneWithSegue(_ segue: UIStoryboardSegue)
 }
+
+
+
+

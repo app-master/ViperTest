@@ -6,13 +6,13 @@
 //  Copyright © 2019 Sergey Koshlakov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class PhotoSearchPresenter {
     
     var interactor: PhotoSearchInteractorInput!
     unowned var view: PhotoViewControllerInput!
-    var router: PhotoSearchRouting!
+    var router: PhotoSearchRoutingProtocolInput!
     
 }
 
@@ -36,6 +36,10 @@ extension PhotoSearchPresenter: PhotoSearchPresenterInput {
     
     func goToPhotoDetailScreen() {
         router.navigateToPhotoDetail()
+    }
+    
+    func passDataToNextSceneWithSegue(_ segue: UIStoryboardSegue) {
+        router.passDataToNextSceneWithSegue(segue)
     }
     
 }
