@@ -19,9 +19,12 @@ class PhotoSearchAssembly {
         let presenter = PhotoSearchPresenter()
         let interator = PhotoSearchInteractor()
         let serverManager = ServerManager.manager
+        let router = PhotoSearchRouting()
         
         vc.presenter = presenter
         presenter.view = vc
+        presenter.router = router
+        router.viewController = vc
         presenter.interactor = interator
         interator.dataManager = serverManager
         interator.presenter = presenter

@@ -29,6 +29,7 @@ class PhotoViewController: UIViewController {
         navigationItem.title = searchText
         
         performWithSearchText(searchText)
+        showWaitingView()
     }
     
     // MARK: - Methods
@@ -65,6 +66,26 @@ extension PhotoViewController: PhotoViewControllerInput {
         
     }
     
+    func showWaitingView() {
+        let ac = UIAlertController(title: nil, message: "Please waiting...", preferredStyle: .alert)
+        ac.view.tintColor = UIColor.black
+        
+        let indicator = UIActivityIndicatorView(frame: CGRect(x: 25, y: 25, width: 10, height: 10))
+        indicator.hidesWhenStopped = true
+        indicator.style = .gray
+        indicator.startAnimating()
+        
+        ac.view.addSubview(indicator)
+        present(ac, animated: true, completion: nil)
+    }
+    
+    func hideWaitingView() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func getHavingPhotoCount() -> Int {
+        return photos.count
+    }
     
 }
 
@@ -118,7 +139,7 @@ extension PhotoViewController: UICollectionViewDataSource {
 extension PhotoViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        presenter.goToPhotoDetailScreen()
     }
     
 }

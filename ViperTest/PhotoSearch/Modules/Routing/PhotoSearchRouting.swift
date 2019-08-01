@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class PhotoSearchRouting: PhotoSearchRoutingProtocolInput {
+    
+    unowned var viewController: PhotoViewController!
+    
+    func navigateToPhotoDetail() {
+        viewController.performSegue(withIdentifier: "ShowDetailSegue", sender: nil)
+    }
+    
+}

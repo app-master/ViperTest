@@ -12,23 +12,30 @@ class PhotoSearchPresenter {
     
     var interactor: PhotoSearchInteractorInput!
     unowned var view: PhotoViewControllerInput!
-    
-    
+    var router: PhotoSearchRouting!
     
 }
 
 extension PhotoSearchPresenter: PhotoSearchPresenterInput {
     
     func getPhotosWithSearchTag(_ searchTag: String, page: Int) {
+        if view.getHavingPhotoCount() == 0 {
+            view.showWaitingView()
+        }
         interactor.fetchPhotosWithSearchTag(searchTag, page: page)
     }
     
     func providedPhotos(_ photos: [Photo], totalPages: Int) {
+        view.hideWaitingView()
         view.displayFetchedPhotos(photos, totalPages: totalPages)
     }
     
     func serviceError(_ error: NSError) {
         view.displayErrorViewWithText(error.localizedDescription)
+    }
+    
+    func goToPhotoDetailScreen() {
+        router.navigateToPhotoDetail()
     }
     
 }
